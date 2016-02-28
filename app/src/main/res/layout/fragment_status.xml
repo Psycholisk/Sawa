@@ -1,0 +1,24 @@
+
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:id="@+id/statusoverlay"
+    android:background="@color/transparent_white"
+    tools:context="com.example.psycholisk.sawa.StatusFragment">
+
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Available"
+        android:background="@drawable/available_button"/>
+    <Button
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:text="Busy"
+        android:layout_marginTop="60dp"
+        android:background="@drawable/busy_button"/>
+</RelativeLayout>
