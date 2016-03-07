@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import com.android.volley.RequestQueue;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
@@ -20,11 +21,18 @@ import com.google.android.gms.maps.model.MarkerOptions;
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
+//    public static final String REQUEST_TAG = "MainVolleyActivity";
+//    private RequestQueue mQueue;
+//    private final String apiDomain = "http://naderkanounji.com/sawa/";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
+
+//        mQueue = CustomVolleyRequestQueue.getInstance(this.getApplicationContext()).getRequestQueue();
+//        String url = apiDomain + "2.5/weather?q=London,uk";
 
 //        ImageView membershipBg = (ImageView)findViewById(R.id.membershipbg);
 //        membershipBg.setVisibility(View.INVISIBLE);
