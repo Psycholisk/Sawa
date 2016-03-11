@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Sawa</string>
     <string name="title_activity_maps">MapsActivity</string>
+
+
+    <!-- Validation Messages-->
+    <string name="email_format">Please enter a valid email address.</string>
+    <string name="unknown_error">Something went wrong.</string>
 </resources>
