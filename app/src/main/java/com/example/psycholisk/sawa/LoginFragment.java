@@ -72,8 +72,8 @@ public class LoginFragment extends Fragment {
 
                                     //Launch map + status fragments
 
-                                    ImageView membershipBG = (ImageView)getActivity().findViewById(R.id.membershipbg);
-                                    membershipBG.setVisibility(View.INVISIBLE);
+//                                    ImageView membershipBG = (ImageView)getActivity().findViewById(R.id.membershipbg);
+//                                    membershipBG.setVisibility(View.INVISIBLE);
 //                                    FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
                                     valMessage.setText("");
                                     ((MapsActivity)getActivity()).FinalizeLogin();
@@ -114,9 +114,10 @@ public class LoginFragment extends Fragment {
         goToSignup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-                SignupFragment signupFrag = new SignupFragment();
-                _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
+                ((MapsActivity)getActivity()).GoToSignUp();
+//                FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+//                SignupFragment signupFrag = new SignupFragment();
+//                _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
             }
         });
         return view;

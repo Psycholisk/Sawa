@@ -1,71 +1,125 @@
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:gravity="center"
     tools:context="com.example.psycholisk.sawa.LoginFragment">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
 
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:id="@+id/loginemail"
-        android:inputType="textEmailAddress"
-        android:hint="Username or Email"/>
-    <EditText
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:id="@+id/loginpassword"
-        android:inputType="textPassword"
-        android:hint="Password"/>
-    <Button
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:text="Sign in"
-        android:id="@+id/loginsubmit"/>
-    <TextView
-        android:layout_width="250dp"
-        android:layout_height="50dp"
-        android:layout_marginTop="10dp"
-        android:textColor="#FF0000"
-        android:id="@+id/validationmessage"/>
-    <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:text="Facebook"
-            android:id="@+id/facebooklogin"/>
-        <Button
-            android:layout_width="120dp"
-            android:layout_height="50dp"
-            android:text="Google+"
-            android:layout_alignParentRight="true"
-            android:id="@+id/googlelogin"/>
+        android:gravity="center">
 
-    </RelativeLayout>
-    <RelativeLayout
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="SAWA"
+            android:textSize="26dp"
+            android:layout_marginBottom="50dp"
+            android:textColor="@color/white"/>
+        <EditText
+            android:id="@+id/loginemail"
+            android:inputType="textEmailAddress"
+            android:drawableLeft="@drawable/email_input_icon_20dp"
+            android:hint="Email"
+            style="@style/form_input"/>
+        <EditText
+            android:id="@+id/loginpassword"
+            android:inputType="textPassword"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/password_input_icon_20dp"
+            android:hint="Password"
+            style="@style/form_input"/>
+        <Button
+            android:layout_marginTop="30dp"
+            android:text="Sign in"
+            android:textAllCaps="false"
+            android:id="@+id/loginsubmit"
+            style="@style/standard_button"/>
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/forgotpassword"
             android:textColor="#FFFFFF"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="20dp"
             android:text="Forget Password?"/>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="0dp"
+            android:textColor="#FF0000"
+            android:id="@+id/validationmessage"/>
+        <TextView
+            android:layout_width="324dp"
+            android:layout_height="1dp"
+            android:background="@color/white"
+            android:layout_marginTop="10dp"
+            />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="26dp"
+            android:text="or"
+            android:textSize="20dp"
+            android:textStyle="italic"
+            android:background="@color/teal_500"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:layout_marginTop="-16dp"
+            android:textColor="@color/white"
+            android:textAlignment="center"/>
+        <LinearLayout
+            android:layout_width="324dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_gravity="center"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Facebook"
+                android:id="@+id/facebooklogin"/>
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:text="Google+"
+
+                android:id="@+id/googlelogin"/>
+
+        </LinearLayout>
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:layout_marginBottom="5dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Not connected yet? "
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            />
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/gotosignup"
-            android:text="Sign Up"
-            android:textColor="#FFFFFF"
-            android:layout_alignParentRight="true"
+            android:text="@string/signup_caption_inlogin"
+            android:textColor="@color/white"
+            android:textStyle="bold"
             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text=" here"
+            android:textColor="@color/white"
+            android:textStyle="italic"
+            />
+    </LinearLayout>
 
-    </RelativeLayout>
 
-</LinearLayout>
+</RelativeLayout>

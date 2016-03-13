@@ -2,6 +2,8 @@
     <string name="app_name">Sawa</string>
     <string name="title_activity_maps">MapsActivity</string>
 
+    <string name="signup_caption_inlogin"><u>Sign Up</u></string>
+
 
     <!-- Validation Messages-->
     <string name="email_format">Please enter a valid email address.</string>

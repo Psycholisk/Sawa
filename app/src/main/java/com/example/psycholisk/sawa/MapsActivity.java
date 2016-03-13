@@ -43,13 +43,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 //        MapFragment mapFrag = new MapFragment();
 //        _fragmentTransaction.add(R.id.mapframe ,mapFrag, "MapFragment");
-//        LoginFragment loginFrag = new LoginFragment();
-//        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
-//        _fragmentTransaction.commit();
+        LoginFragment loginFrag = new LoginFragment();
+        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
+        _fragmentTransaction.commit();
 
-        MapFragment mapFragment = (MapFragment) _fragmentManager
-                .findFragmentByTag("MapFragment");
-        mapFragment.getMapAsync(this);
+//        MapFragment mapFragment = (MapFragment) _fragmentManager
+//                .findFragmentByTag("MapFragment");
+//        mapFragment.getMapAsync(this);
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -104,8 +104,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         LoginFragment loginFragment = (LoginFragment)_fragmentManager.findFragmentByTag("LoginFragment");
         _fragmentTransaction.remove(loginFragment);
 
-        ImageView membershipBG = (ImageView)findViewById(R.id.membershipbg);
-        membershipBG.setVisibility(View.INVISIBLE);
+//        ImageView membershipBG = (ImageView)findViewById(R.id.membershipbg);
+//        membershipBG.setVisibility(View.INVISIBLE);
     }
 
     public void FinalizeLogin() {
@@ -114,5 +114,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //
 //        MapFragment mapFragment = (MapFragment) _fragmentManager.findFragmentByTag("MapFragment");
 //        mapFragment.getMapAsync(this);
+    }
+    public void GoToSignUp() {
+        FragmentManager _fragmentManager = getFragmentManager();
+        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+        SignupFragment signupFrag = new SignupFragment();
+        _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
     }
 }

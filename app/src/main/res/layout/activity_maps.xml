@@ -28,17 +28,18 @@
     <!--android:layout_width="fill_parent"-->
     <!--android:layout_height="fill_parent" />-->
 
-    <ImageView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:src="@drawable/login_city"
-        android:id="@+id/membershipbg"
-        android:scaleType = "centerCrop"
-        />
+    <!--<ImageView-->
+        <!--android:layout_width="fill_parent"-->
+        <!--android:layout_height="fill_parent"-->
+        <!--android:src="@drawable/login_city2"-->
+        <!--android:id="@+id/membershipbg"-->
+        <!--android:scaleType = "centerCrop"-->
+        <!--/>-->
     <FrameLayout
         android:id="@+id/membershipframe"
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"/>
+        android:layout_height="fill_parent"
+        android:background="@color/teal_500"/>
     <!--<fragment-->
     <!--android:id="@+id/login_fragment"-->
     <!--android:layout_width="fill_parent"-->
