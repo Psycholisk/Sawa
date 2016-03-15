@@ -3,9 +3,14 @@
     <string name="title_activity_maps">MapsActivity</string>
 
     <string name="signup_caption_inlogin"><u>Sign Up</u></string>
+    <string name="verify_code_insignup"><u>Enter Verification Code</u></string>
 
 
     <!-- Validation Messages-->
+    <string name="required_field">Required field.</string>
     <string name="email_format">Please enter a valid email address.</string>
+    <string name="password_length">Password must contain 8 or more characters.</string>
     <string name="unknown_error">Something went wrong.</string>
+    <string name="confirm_no_match">Passwords do not match.</string>
+    <string name="numeric_field">Numeric value only.</string>
 </resources>

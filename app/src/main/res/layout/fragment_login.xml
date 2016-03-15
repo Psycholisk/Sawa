@@ -2,7 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.example.psycholisk.sawa.LoginFragment">
+    tools:context="com.example.psycholisk.sawa.LoginFragment"
+    android:background="@color/teal_500">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,15 +25,27 @@
             android:drawableLeft="@drawable/email_input_icon_20dp"
             android:hint="Email"
             style="@style/form_input"/>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#FF0000"
+            android:id="@+id/login_emailvaldiation"/>
         <EditText
             android:id="@+id/loginpassword"
             android:inputType="textPassword"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="5dp"
             android:drawableLeft="@drawable/password_input_icon_20dp"
             android:hint="Password"
             style="@style/form_input"/>
+        <TextView
+            android:layout_width="250dp"
+            android:layout_height="15dp"
+            android:layout_marginTop="2dp"
+            android:textColor="#FF0000"
+            android:id="@+id/login_passwordvaldiation"/>
         <Button
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="13dp"
             android:text="Sign in"
             android:textAllCaps="false"
             android:id="@+id/loginsubmit"
@@ -45,12 +58,6 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="20dp"
             android:text="Forget Password?"/>
-        <TextView
-            android:layout_width="250dp"
-            android:layout_height="0dp"
-            android:layout_marginTop="0dp"
-            android:textColor="#FF0000"
-            android:id="@+id/validationmessage"/>
         <TextView
             android:layout_width="324dp"
             android:layout_height="1dp"

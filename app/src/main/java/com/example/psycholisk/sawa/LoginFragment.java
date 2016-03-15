@@ -31,7 +31,8 @@ public class LoginFragment extends Fragment {
     private RequestQueue mQueue;
     private final String apiDomain = "http://naderkanounji.com/sawa/";
     public utils utils = new utils();
-    public TextView valMessage;
+    public TextView emailVal;
+    public TextView passwordVal;
     private static String userToken = "";
     public GoogleMap gMap;
     @Override
@@ -45,79 +46,84 @@ public class LoginFragment extends Fragment {
      //   Button signupButton = (Button)view.findViewById(R.id.signupbtn_login);
         TextView goToSignup = (TextView)view.findViewById(R.id.gotosignup);
         Button signinbtn = (Button)view.findViewById(R.id.loginsubmit);
-        valMessage = (TextView)view.findViewById(R.id.validationmessage);
-
-
+        emailVal = (TextView)view.findViewById(R.id.login_emailvaldiation);
+        passwordVal = (TextView)view.findViewById(R.id.login_passwordvaldiation);
 
 
 
         signinbtn.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
+                //Reset validation messages
+                emailVal.setText("");
+                passwordVal.setText("");
 
-                EditText emailinput = (EditText)view.findViewById(R.id.loginemail);
-                EditText passwordinput = (EditText)view.findViewById(R.id.loginpassword);
+                boolean isFormValid = true;
+//                EditText emailinput = (EditText)view.findViewById(R.id.loginemail);
+//                EditText passwordinput = (EditText)view.findViewById(R.id.loginpassword);
+                String emailText = ((EditText)view.findViewById(R.id.loginemail)).getText().toString();
+                String passwordText = ((EditText) view.findViewById(R.id.loginpassword)).getText().toString();
 
-                if(utils.isEmailValid(emailinput.getText().toString())) {
+                //Validating inputs
+                if(emailText == null || emailText.isEmpty()) {
+                    isFormValid = false;
+                    emailVal.setText(R.string.required_field);
+                }else {
+                    if(!utils.isEmailValid(emailText)) {
+                        isFormValid =false;
+                        emailVal.setText(R.string.email_format);
+                    }
+                }
+                if(passwordText == null || passwordText.isEmpty()) {
+                    isFormValid = false;
+                    passwordVal.setText(R.string.required_field);
+                }else {
+                    if(passwordText.length() < 8){
+                        isFormValid = false;
+                        passwordVal.setText(R.string.password_length);
+                    }
+                }
+
+                if(isFormValid) {
                     mQueue = CustomVolleyRequestQueue.getInstance(getActivity().getApplicationContext()).getRequestQueue();
-                    String url = apiDomain + "membership.php?method=Login&email=" + emailinput.getText() + "&password=" + passwordinput.getText();
+                    String url = apiDomain + "membership.php?method=Login&email=" + emailText + "&password=" + passwordText;
                     final CustomJSONObjectRequest jsonRequest = new CustomJSONObjectRequest(Request.Method.GET, url,  new JSONObject(), new Response.Listener<JSONObject>() {
                         @Override
                         public void onResponse(JSONObject response) {
 
-                            try {
-                                if(Integer.parseInt(response.getString("errorcode")) == 0)
-                                {
-                                    userToken = response.getString("message");
+                        try {
+                            if(Integer.parseInt(response.getString("errorcode")) == 0)
+                            {
+                                //save token
+                                userToken = response.getString("message");
 
-                                    //Launch map + status fragments
-
-//                                    ImageView membershipBG = (ImageView)getActivity().findViewById(R.id.membershipbg);
-//                                    membershipBG.setVisibility(View.INVISIBLE);
-//                                    FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-                                    valMessage.setText("");
-                                    ((MapsActivity)getActivity()).FinalizeLogin();
-//                                    StatusFragment statusFrag = new StatusFragment();
-//                                    _fragmentTransaction.add(R.id.mapframe, mapFrag, "MapFragment");
-//                                    _fragmentTransaction.add(R.id.statusframe, statusFrag, "StatusFragment");
-//                                    LoginFragment loginFragment = (LoginFragment)_fragmentManager.findFragmentByTag("LoginFragment");
-//                                    _fragmentTransaction.remove(loginFragment);
-                           //         _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
-//                                    SignupFragment signupFrag = new SignupFragment();
-//                                    _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
-                                }else {
-                                    valMessage.setText(response.getString("message"));
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                                valMessage.setText(R.string.unknown_error);
+                                //Launch map + status fragments
+                                passwordVal.setText(userToken);
+                                ((MapsActivity)getActivity()).FinalizeLogin();
+                            }else {
+                                passwordVal.setText(response.getString("message"));
                             }
+                        } catch (JSONException e) {
+                            e.printStackTrace();
+                            passwordVal.setText(R.string.unknown_error);
+                        }
                         }
                     },
-                            new Response.ErrorListener() {
-                                @Override
-                                public void onErrorResponse(VolleyError error) {
-                                    valMessage.setText(R.string.unknown_error);
-//                                    FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-//                                    SignupFragment signupFrag = new SignupFragment();
-//                                    _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
-                                }
-                            });
+                    new Response.ErrorListener() {
+                        @Override
+                        public void onErrorResponse(VolleyError error) {
+                            passwordVal.setText(R.string.unknown_error);
+                        }
+                    });
                     jsonRequest.setTag(REQUEST_TAG);
                     mQueue.add(jsonRequest);
-                }else {
-                    valMessage.setText(R.string.email_format);
                 }
-
             }
         });
         goToSignup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 ((MapsActivity)getActivity()).GoToSignUp();
-//                FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-//                SignupFragment signupFrag = new SignupFragment();
-//                _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
             }
         });
         return view;

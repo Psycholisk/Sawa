@@ -5,6 +5,7 @@ import android.app.FragmentTransaction;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
@@ -38,7 +39,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        membershipBg.setVisibility(View.INVISIBLE);
 
         final FragmentManager _fragmentManager = getFragmentManager();
-
         FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
 
 //        MapFragment mapFrag = new MapFragment();
@@ -76,8 +76,16 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        });
 //
 //          mapFragment.getView().setClickable(false);
-    }
 
+    }
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+            getFragmentManager().popBackStack();
+        } else {
+            super.onBackPressed();
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -120,5 +128,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
         SignupFragment signupFrag = new SignupFragment();
         _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
+
+
     }
+
+
 }
