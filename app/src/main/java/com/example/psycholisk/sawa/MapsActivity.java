@@ -2,6 +2,8 @@ package com.example.psycholisk.sawa;
 
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -31,25 +33,39 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
 
-
-//        mQueue = CustomVolleyRequestQueue.getInstance(this.getApplicationContext()).getRequestQueue();
-//        String url = apiDomain + "2.5/weather?q=London,uk";
-
-//        ImageView membershipBg = (ImageView)findViewById(R.id.membershipbg);
-//        membershipBg.setVisibility(View.INVISIBLE);
-
         final FragmentManager _fragmentManager = getFragmentManager();
-        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+        final FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+//        final SharedPreferences _sharedPref = getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
+//
+//
+//        String userToken = _sharedPref.getString("userToken", "");
+//
+//
+//
+//        LoginFragment loginFrag = new LoginFragment();
+//        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
+//        _fragmentTransaction.commit();
 
-//        MapFragment mapFrag = new MapFragment();
-//        _fragmentTransaction.add(R.id.mapframe ,mapFrag, "MapFragment");
-        LoginFragment loginFrag = new LoginFragment();
-        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
-        _fragmentTransaction.commit();
 
-//        MapFragment mapFragment = (MapFragment) _fragmentManager
-//                .findFragmentByTag("MapFragment");
-//        mapFragment.getMapAsync(this);
+
+//        if(userToken.isEmpty()) {
+//            LoginFragment loginFrag = new LoginFragment();
+//            _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
+//            _fragmentTransaction.commit();
+//
+//        }else {
+//            SignupFragment signupFrag = new SignupFragment();
+//            _fragmentTransaction.add(R.id.membershipframe, signupFrag, "LoginFragment");
+//            _fragmentTransaction.commit();
+//
+//            SharedPreferences.Editor editor = _sharedPref.edit();
+//            editor.putString("userToken", "");
+//        }
+
+
+        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+                .findFragmentById(R.id.map);
+        mapFragment.getMapAsync(this);
 
 
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
@@ -59,33 +75,17 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        final Fragment loginFrag = fm.findFragmentById(R.id.login_fragment);
 //        final Fragment signupFrag = fm.findFragmentById(R.id.signup_fragment);
 //
-//        fm.beginTransaction().hide(signupFrag).commit();
-
-//        Button signupbtn_login = (Button)findViewById(R.id.signupbtn_login);
-//
-//        signupbtn_login.setOnClickListener(new View.OnClickListener()
-//        {
-//            @Override
-//            public void onClick(View v)
-//            {
-//                FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-//                SignupFragment signupFrag = new SignupFragment();
-//                _fragmentTransaction.replace(R.id.membershipframe, signupFrag).commit();
-//
-//            }
-//        });
-//
 //          mapFragment.getView().setClickable(false);
 
     }
-    @Override
-    public void onBackPressed() {
-        if (getFragmentManager().getBackStackEntryCount() > 0 ){
-            getFragmentManager().popBackStack();
-        } else {
-            super.onBackPressed();
-        }
-    }
+//    @Override
+//    public void onBackPressed() {
+//        if (getFragmentManager().getBackStackEntryCount() > 0 ){
+//            getFragmentManager().popBackStack();
+//        } else {
+//            super.onBackPressed();
+//        }
+//    }
 
     /**
      * Manipulates the map once available.
@@ -104,13 +104,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
 
-        FragmentManager _fragmentManager = getFragmentManager();
-        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-
-        StatusFragment statusFrag = new StatusFragment();
-        _fragmentTransaction.add(R.id.statusframe, statusFrag, "StatusFragment");
-        LoginFragment loginFragment = (LoginFragment)_fragmentManager.findFragmentByTag("LoginFragment");
-        _fragmentTransaction.remove(loginFragment);
+//        FragmentManager _fragmentManager = getFragmentManager();
+//        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+//
+//        StatusFragment statusFrag = new StatusFragment();
+//        _fragmentTransaction.add(R.id.statusframe, statusFrag, "StatusFragment");
+//        LoginFragment loginFragment = (LoginFragment)_fragmentManager.findFragmentByTag("LoginFragment");
+//        _fragmentTransaction.remove(loginFragment);
 
 //        ImageView membershipBG = (ImageView)findViewById(R.id.membershipbg);
 //        membershipBG.setVisibility(View.INVISIBLE);
@@ -123,14 +123,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //        MapFragment mapFragment = (MapFragment) _fragmentManager.findFragmentByTag("MapFragment");
 //        mapFragment.getMapAsync(this);
     }
-    public void GoToSignUp() {
-        FragmentManager _fragmentManager = getFragmentManager();
-        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
-        SignupFragment signupFrag = new SignupFragment();
-        _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
-
-
-    }
+//    public void GoToSignUp() {
+//        FragmentManager _fragmentManager = getFragmentManager();
+//        FragmentTransaction _fragmentTransaction = _fragmentManager.beginTransaction();
+//        SignupFragment signupFrag = new SignupFragment();
+//        _fragmentTransaction.replace(R.id.membershipframe, signupFrag).addToBackStack(null).commit();
+//
+//
+//    }
 
 
 }

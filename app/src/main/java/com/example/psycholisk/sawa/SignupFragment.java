@@ -3,6 +3,8 @@ package com.example.psycholisk.sawa;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.telephony.PhoneNumberUtils;
 import android.view.LayoutInflater;
@@ -117,8 +119,14 @@ public class SignupFragment extends Fragment {
                                 if (Integer.parseInt(response.getString("errorcode")) == 0) {
                                     userToken = response.getString("message");
 
-                                    generalVal.setText(userToken);
-                                    ((MapsActivity) getActivity()).FinalizeLogin();
+                                    SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
+                                    SharedPreferences.Editor edit = preferences.edit();
+                                    edit.putString("userToken",userToken);
+                                    edit.commit();
+
+//                                    generalVal.setText(userToken);
+                                    passwordVal.setText("");
+                                    ((MainActivity)getActivity()).LaunchMap();
                                 } else {
                                     generalVal.setText(response.getString("message"));
                                 }

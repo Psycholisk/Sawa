@@ -3,6 +3,8 @@ package com.example.psycholisk.sawa;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.media.Image;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -59,8 +61,6 @@ public class LoginFragment extends Fragment {
                 passwordVal.setText("");
 
                 boolean isFormValid = true;
-//                EditText emailinput = (EditText)view.findViewById(R.id.loginemail);
-//                EditText passwordinput = (EditText)view.findViewById(R.id.loginpassword);
                 String emailText = ((EditText)view.findViewById(R.id.loginemail)).getText().toString();
                 String passwordText = ((EditText) view.findViewById(R.id.loginpassword)).getText().toString();
 
@@ -97,9 +97,15 @@ public class LoginFragment extends Fragment {
                                 //save token
                                 userToken = response.getString("message");
 
+                                SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
+                                SharedPreferences.Editor edit = preferences.edit();
+                                edit.putString("userToken",userToken);
+                                edit.commit();
+
                                 //Launch map + status fragments
-                                passwordVal.setText(userToken);
-                                ((MapsActivity)getActivity()).FinalizeLogin();
+                              //  passwordVal.setText(userToken);
+                                passwordVal.setText("");
+                                ((MainActivity)getActivity()).LaunchMap();
                             }else {
                                 passwordVal.setText(response.getString("message"));
                             }
@@ -123,7 +129,7 @@ public class LoginFragment extends Fragment {
         goToSignup.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
-                ((MapsActivity)getActivity()).GoToSignUp();
+                ((MainActivity)getActivity()).GoToSignUp();
             }
         });
         return view;

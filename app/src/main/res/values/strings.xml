@@ -13,4 +13,9 @@
     <string name="unknown_error">Something went wrong.</string>
     <string name="confirm_no_match">Passwords do not match.</string>
     <string name="numeric_field">Numeric value only.</string>
+
+
+    <!-- Important Values -->
+    <string name="user_preferences">USER_SETTINGS</string>
+    <string name="title_activity_maps123">Map</string>
 </resources>
