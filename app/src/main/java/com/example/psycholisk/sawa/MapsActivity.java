@@ -4,6 +4,7 @@ import android.app.FragmentManager;
 import android.app.FragmentTransaction;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.net.wifi.WifiConfiguration;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
@@ -67,13 +68,13 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
 
+        StatusFragment statusFrag = new StatusFragment();
+        _fragmentTransaction.add(R.id.statuscontainer, statusFrag, "StatusFragment");
+        _fragmentTransaction.commit();
 
+        mapFragment.getView().setClickable(false);
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
 
-//
-//        FragmentManager fm = getSupportFragmentManager();
-//        final Fragment loginFrag = fm.findFragmentById(R.id.login_fragment);
-//        final Fragment signupFrag = fm.findFragmentById(R.id.signup_fragment);
 //
 //          mapFragment.getView().setClickable(false);
 

@@ -97,15 +97,9 @@ public class LoginFragment extends Fragment {
                                 //save token
                                 userToken = response.getString("message");
 
-                                SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
-                                SharedPreferences.Editor edit = preferences.edit();
-                                edit.putString("userToken",userToken);
-                                edit.commit();
-
-                                //Launch map + status fragments
                               //  passwordVal.setText(userToken);
                                 passwordVal.setText("");
-                                ((MainActivity)getActivity()).LaunchMap();
+                                ((MainActivity)getActivity()).LaunchMap(userToken);
                             }else {
                                 passwordVal.setText(response.getString("message"));
                             }

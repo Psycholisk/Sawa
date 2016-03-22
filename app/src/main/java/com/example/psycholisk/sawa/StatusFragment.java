@@ -18,9 +18,7 @@ public class StatusFragment extends Fragment {
 
         View view =  inflater.inflate(R.layout.fragment_status, container, false);
 
-        RelativeLayout parentView = (RelativeLayout) view.findViewById(R.id.statusoverlay);
 
-        parentView.setOnClickListener(null);
 
         return view;
     }

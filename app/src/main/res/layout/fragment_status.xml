@@ -1,5 +1,5 @@
 
-<RelativeLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="fill_parent"
@@ -11,14 +11,11 @@
     tools:context="com.example.psycholisk.sawa.StatusFragment">
 
     <Button
-        android:layout_width="300dp"
-        android:layout_height="50dp"
         android:text="Available"
-        android:background="@drawable/available_button"/>
+        style="@style/status_button"/>
     <Button
-        android:layout_width="300dp"
-        android:layout_height="50dp"
         android:text="Busy"
+        style="@style/status_button"
         android:layout_marginTop="60dp"
-        android:background="@drawable/busy_button"/>
-</RelativeLayout>
+        android:background="@color/red"/>
+</LinearLayout>

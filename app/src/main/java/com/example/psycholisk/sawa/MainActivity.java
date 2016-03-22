@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 
 public class MainActivity extends FragmentActivity {
 
@@ -25,23 +26,29 @@ public class MainActivity extends FragmentActivity {
 
 
 
-        LoginFragment loginFrag = new LoginFragment();
-        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
-        _fragmentTransaction.commit();
+//        LoginFragment loginFrag = new LoginFragment();
+//        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
+//        _fragmentTransaction.commit();
 
-//        if(userToken.isEmpty()) {
-//            LoginFragment loginFrag = new LoginFragment();
-//            _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
-//            _fragmentTransaction.commit();
-//
-//        }else {
-//            SignupFragment signupFrag = new SignupFragment();
-//            _fragmentTransaction.add(R.id.membershipframe, signupFrag, "LoginFragment");
-//            _fragmentTransaction.commit();
-//
+        if(userToken.isEmpty()) {
+            LoginFragment loginFrag = new LoginFragment();
+            _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
+            _fragmentTransaction.commit();
+
+            findViewById(R.id.launchingloader).setVisibility(View.INVISIBLE);
+
+        }else {
+            SignupFragment signupFrag = new SignupFragment();
+            _fragmentTransaction.add(R.id.membershipframe, signupFrag, "LoginFragment");
+            _fragmentTransaction.commit();
+
 //            SharedPreferences.Editor editor = _sharedPref.edit();
 //            editor.putString("userToken", "");
-//        }
+//            editor.commit();
+
+            LaunchMap("");
+//
+        }
 
 
 //        MapFragment mapFragment = (MapFragment) _fragmentManager
@@ -68,7 +75,13 @@ public class MainActivity extends FragmentActivity {
         }
     }
 
-    public void LaunchMap() {
+    public void LaunchMap(String userToken) {
+        if(!userToken.isEmpty()) {
+            SharedPreferences preferences = this.getApplicationContext().getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
+            SharedPreferences.Editor edit = preferences.edit();
+            edit.putString("userToken", userToken);
+            edit.commit();
+        }
         Intent intent = new Intent(this, MapsActivity.class);
         this.startActivity(intent);
 //        FragmentManager _fragmentManager = getFragmentManager();

@@ -119,14 +119,8 @@ public class SignupFragment extends Fragment {
                                 if (Integer.parseInt(response.getString("errorcode")) == 0) {
                                     userToken = response.getString("message");
 
-                                    SharedPreferences preferences = getActivity().getApplicationContext().getSharedPreferences(getString(R.string.user_preferences), Context.MODE_PRIVATE);
-                                    SharedPreferences.Editor edit = preferences.edit();
-                                    edit.putString("userToken",userToken);
-                                    edit.commit();
-
-//                                    generalVal.setText(userToken);
                                     passwordVal.setText("");
-                                    ((MainActivity)getActivity()).LaunchMap();
+                                    ((MainActivity)getActivity()).LaunchMap(userToken);
                                 } else {
                                     generalVal.setText(response.getString("message"));
                                 }
