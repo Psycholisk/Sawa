@@ -17,6 +17,15 @@
         android:layout_height="match_parent"
         android:id="@+id/statuscontainer"/>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="VANISH"
+        android:textSize="16dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginLeft="5dp"
+        android:textStyle="bold"
+        android:id="@+id/vanish_map"/>
 
 
 </RelativeLayout>

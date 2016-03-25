@@ -1,0 +1,27 @@
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/transparent_white"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="5 mins"
+        android:id="@+id/time_display"/>
+    <SeekBar
+        android:layout_width="300dp"
+        android:layout_marginTop="20dp"
+        android:layout_height="wrap_content"
+        android:id="@+id/time_seekbar"
+        android:max="475"/>
+
+    <Button
+        style="@style/standard_button"
+        android:text="Done"
+        android:textAllCaps="false"
+        android:layout_marginTop="50dp"
+        android:id="@+id/tta_done"/>
+</LinearLayout>

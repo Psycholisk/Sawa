@@ -24,8 +24,6 @@ public class MainActivity extends FragmentActivity {
 
         String userToken = _sharedPref.getString("userToken", "");
 
-
-
 //        LoginFragment loginFrag = new LoginFragment();
 //        _fragmentTransaction.add(R.id.membershipframe, loginFrag, "LoginFragment");
 //        _fragmentTransaction.commit();

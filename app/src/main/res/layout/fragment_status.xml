@@ -12,10 +12,12 @@
 
     <Button
         android:text="Available"
-        style="@style/status_button"/>
+        style="@style/status_button"
+        android:id="@+id/available_btn"/>
     <Button
         android:text="Busy"
         style="@style/status_button"
         android:layout_marginTop="60dp"
-        android:background="@color/red"/>
+        android:background="@color/red"
+        android:id="@+id/busy_btn"/>
 </LinearLayout>

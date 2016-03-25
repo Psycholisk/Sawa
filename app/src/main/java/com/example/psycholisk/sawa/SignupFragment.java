@@ -26,7 +26,7 @@ import org.w3c.dom.Text;
 
 public class SignupFragment extends Fragment {
 
-    public static final String REQUEST_TAG = "LoginVolleyFragment";
+    public static final String REQUEST_TAG = "SignupVolleyFragment";
     private RequestQueue mQueue;
     private final String apiDomain = "http://naderkanounji.com/sawa/";
     public utils utils = new utils();
