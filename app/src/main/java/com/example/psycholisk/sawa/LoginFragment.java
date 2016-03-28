@@ -31,7 +31,7 @@ public class LoginFragment extends Fragment {
 
     public static final String REQUEST_TAG = "LoginVolleyFragment";
     private RequestQueue mQueue;
-    private final String apiDomain = "http://naderkanounji.com/sawa/";
+    private final String apiDomain = "http://naderkanounji.com/sawa/"; //change hostname
     public utils utils = new utils();
     public TextView emailVal;
     public TextView passwordVal;

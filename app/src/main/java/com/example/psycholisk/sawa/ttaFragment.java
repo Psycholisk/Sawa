@@ -25,7 +25,7 @@ public class ttaFragment extends Fragment {
 
     public static final String REQUEST_TAG = "LoginVolleyFragment";
     private RequestQueue mQueue;
-    private final String apiDomain = "http://naderkanounji.com/sawa/";
+    private final String apiDomain = "http://naderkanounji.com/sawa/"; //change hostname
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,

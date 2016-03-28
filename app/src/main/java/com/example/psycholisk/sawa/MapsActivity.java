@@ -29,7 +29,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     private GoogleMap mMap;
     public static final String REQUEST_TAG = "MapVolleyFragment";
     private RequestQueue mQueue;
-    private final String apiDomain = "http://naderkanounji.com/sawa/";
+    private final String apiDomain = "http://naderkanounji.com/sawa/"; //change hostname
     private TextView vanish_map;
 
     @Override

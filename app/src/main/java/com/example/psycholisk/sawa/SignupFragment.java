@@ -28,7 +28,7 @@ public class SignupFragment extends Fragment {
 
     public static final String REQUEST_TAG = "SignupVolleyFragment";
     private RequestQueue mQueue;
-    private final String apiDomain = "http://naderkanounji.com/sawa/";
+    private final String apiDomain = "http://naderkanounji.com/sawa/"; //change hostname
     public utils utils = new utils();
     public TextView emailVal;
     public TextView mobileVal;
